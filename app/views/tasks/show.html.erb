@@ -1,0 +1,19 @@
+<div class="main tasks-show">
+  <div class="container">
+    <div class="tasks-show-item">
+      <p>【依頼内容】</p>
+      <p>  <%= @task.title %>  </p>
+      <p>【報酬】</p>
+      <p><%= @task.compensation %></p>
+      <p>【受託受付終了日】</p>
+      <p><%= @task.reception_deadline %></p>
+      <p>【頼みごとの詳細】</p>
+      <p><%= @task.content %></p>
+      <div class="task-menus">
+        <%= link_to("編集", "/tasks/#{@task.id}/edit") %>
+        <%= link_to("削除", "/tasks/#{@task.id}/destroy", {method: "post"}) %>
+      </div>
+
+    </div>
+  </div>
+</div>

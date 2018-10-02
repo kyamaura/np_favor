@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+
+
+  post "assistants/:post_id/create" => "assistants#create"
+  post "assistants/:post_id/destroy" => "assistants#destroy"
+
+  get 'signup' => "users#new"
+  post "users/create" => "users#create"
+  get "login" => "users#login_form"
+  post "login" => "users#login"
+  post "logout" => "users#logout"
+  get "users/index" => "users#index"
+  get "users/:id/edit" => "users#edit"
+  post "users/:id/update" => "users#update"
+  get "users/:id" => "users#show"
+
+  get "tasks/index" => "tasks#index"
+  get "tasks/up" => "tasks#up"
+  post "tasks/create" => "tasks#create"
+  get 'tasks/new' => "tasks#new"
+  post "tasks/:id/offer" => "tasks#offer"
+  post "tasks/:id/destroy" => "tasks#destroy"
+  get "tasks/:id" => "tasks#show"
+
+
+  get '/' => "home#top"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
