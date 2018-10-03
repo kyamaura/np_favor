@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-
-  post "assistants/:post_id/create" => "assistants#create"
-  post "assistants/:post_id/destroy" => "assistants#destroy"
+  post "assistants/:task_id/create" => "assistants#create"
+  post "assistants/:task_id/destroy" => "assistants#destroy"
 
   get 'signup' => "users#new"
   post "users/create" => "users#create"
@@ -13,7 +12,10 @@ Rails.application.routes.draw do
   get "users/:id/edit" => "users#edit"
   post "users/:id/update" => "users#update"
   get "users/:id" => "users#show"
+  get "users/:id/assistants" => "users#assistants"
 
+  get "tasks/:id/edit" => "tasks#edit"
+  post "tasks/:id/update" => "tasks#update"
   get "tasks/index" => "tasks#index"
   get "tasks/up" => "tasks#up"
   post "tasks/create" => "tasks#create"

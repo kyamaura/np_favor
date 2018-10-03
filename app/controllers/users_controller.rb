@@ -64,6 +64,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @assistant_count = Assistant.where(user_id: @user.id).count
   end
 
   def edit
@@ -86,6 +87,12 @@ class UsersController < ApplicationController
     else
       render("users/edit")
     end
+  end
+
+  def assistants
+    @user = User.find_by(id: params[:id])
+    @assistants = Assistant.where(user_id: @user.id)
+    @assistant_count = Assistant.where(user_id: @user.id).count
   end
 
 end

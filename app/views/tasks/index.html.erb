@@ -9,7 +9,10 @@
         <p>【受託受付終了日】</p>
         <%= task.reception_deadline %>
         <p>   </p>
-        <%= link_to("詳細表示", "/tasks/#{task.id}") %>
+        <%= link_to("/tasks/#{task.id}") do %>
+          <input type="submit" value="詳細表示">
+        <% end %>
+
       </div>
     <% end %>
   </div>

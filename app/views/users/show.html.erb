@@ -7,6 +7,31 @@
       <% if @user.id == @current_user.id %>
       <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
+      <p>今までに受託した頼みごとの数</p>
+      <h2><%= @assistant_count %></h2>      
     </div>
+
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("頼みごと", "/users/#{@user.id}") %></li>
+      <li><%= link_to("引き受けたもの", "/users/#{@user.id}/assistants") %></li>
+    </ul>
+
+    <% @user.tasks.each do |task| %>
+      <!-- 指定されたコードを貼り付けてください -->
+      <div class="tasks-index-item">
+        <div class="task-left">
+          <img src="<%= "/user_images/#{task.user.image_name}" %>">
+        </div>
+        <div class="task-right">
+          <div class="task-user-name">
+            <%= link_to(task.user.name, "/users/#{task.user.id}") %>
+          </div>
+          <%= link_to(task.title, "/tasks/#{task.id}") %>
+        </div>
+      </div>
+
+    <!-- 以下の<% %>を使ってeach文のendを追加してください -->
+    <% end %>
+
   </div>
 </div>
