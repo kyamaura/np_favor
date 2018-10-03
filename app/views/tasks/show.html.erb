@@ -27,16 +27,20 @@
           <input type="submit" value="オファーする">
         <% end %>
       <% else %>
-        <p></p>
+      <div class="task-menus">
+        <% if @task.user_id == @current_user.id  %>
+          <%= link_to("編集", "/tasks/#{@task.id}/edit") %>
+          <%= link_to("削除", "/tasks/#{@task.id}/destroy", {method: "post"}) %>
+        <% end %>
+        <% if @assistant && @task.user_id == @current_user.id%>
+          <p>【オファー済】</p>
+          <%= link_to("/users/#{@assistant.user_id}") do %>
+            <input type="submit" value="オファーした人の詳細ページ">
+          <% end %>
+        <% end %>
       <% end %>
       </div>
 
-      <div class="task-menus">
-        <% if @task.user_id == @current_user.id  %>
-        <%= link_to("編集", "/tasks/#{@task.id}/edit") %>
-        <%= link_to("削除", "/tasks/#{@task.id}/destroy", {method: "post"}) %>
-        <% end %>
-      </div>
 
     </div>
   </div>
