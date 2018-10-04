@@ -12,17 +12,26 @@ class AssistantsController < ApplicationController
     @task.save!
     end
     flash[:notice] = "頼みごとを引き受けました"
-    redirect_to("/tasks/#{params[:task_id]}")
+    redirect_to("/tasks/index")
     rescue => e
     flash[:notice] = "受託に失敗しました"
     render("/tasks/#{params[:task_id]}")
-    
+
   end
 
   def destroy
+    Assistant.transaction do
     @assistant = Assistant.find_by(user_id: @current_user.id, task_id: params[:task_id])
-    @assistant.destroy
-    redirect_to("/tasks/#{params[:task_id]}")
+    @assistant.destroy!
+    @task = Task.find_by(id: params[:task_id])
+    @task.status = 0
+    @task.save!
+    end
+    flash[:notice] = "受託をキャンセルしました"
+    redirect_to("/tasks/index")
+    rescue => e
+    flash[:notice] = "受託のキャンセルに失敗しました"
+    render("/tasks/#{params[:task_id]}")
   end
 
 end

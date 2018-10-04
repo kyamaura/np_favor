@@ -11,9 +11,10 @@
       <h2><%= @assistant_count %></h2>
     </div>
 
+  <% if @user.id == @current_user.id %>
     <ul class="user-tabs">
       <li class="active"><%= link_to("頼みごと", "/users/#{@user.id}") %></li>
-      <li><%= link_to("引き受けたもの", "/users/#{@user.id}/assistants") %></li>
+      <li><%= link_to("受託したもの", "/users/#{@user.id}/assistants") %></li>
     </ul>
 
     <% @user.tasks.each do |task| %>
@@ -29,9 +30,7 @@
           <%= link_to(task.title, "/tasks/#{task.id}") %>
         </div>
       </div>
-
-    <!-- 以下の<% %>を使ってeach文のendを追加してください -->
     <% end %>
-
+  <% end %>
   </div>
 </div>

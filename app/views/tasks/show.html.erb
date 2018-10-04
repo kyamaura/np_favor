@@ -21,21 +21,26 @@
 
       <div class="task-menus">
       <% if @assistant && @task.user_id != @current_user.id %>
-      <p>【オファー済】</p>
+        <%= link_to("/assistants/#{@task.id}/destroy", {method: "post"}) do %>
+          <input type="submit" value="受託をキャンセルする">
+        <% end %>
       <% elsif  @task.user_id != @current_user.id %>
         <%= link_to("/assistants/#{@task.id}/create", {method: "post"}) do %>
-          <input type="submit" value="オファーする">
+          <input type="submit" value="受託する">
         <% end %>
       <% else %>
       <div class="task-menus">
         <% if @task.user_id == @current_user.id  %>
-          <%= link_to("編集", "/tasks/#{@task.id}/edit") %>
-          <%= link_to("削除", "/tasks/#{@task.id}/destroy", {method: "post"}) %>
+          <%= link_to("/tasks/#{@task.id}/edit") do %>
+            <input type="submit" value="編集">
+          <% end %>
+          <%= link_to("/tasks/#{@task.id}/destroy", {method: "post"}) do %>
+            <input type="submit" value="削除">
+          <% end %>
         <% end %>
         <% if @assistant && @task.user_id == @current_user.id%>
-          <p>【オファー済】</p>
           <%= link_to("/users/#{@assistant.user_id}") do %>
-            <input type="submit" value="オファーした人の詳細ページ">
+            <input type="submit" value="<%= User.find_by(id: @assistant.user_id).name %>が受託しています">
           <% end %>
         <% end %>
       <% end %>
