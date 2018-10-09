@@ -10,14 +10,21 @@
         <%= link_to(@user.email, "/users/#{@user.id}") %>
       </div>
 
-      <p>【依頼内容】</p>
-      <p>  <%= @task.title %>  </p>
-      <p>【報酬】</p>
-      <p><%= @task.compensation %></p>
-      <p>【受託受付終了日】</p>
-      <p><%= @task.reception_deadline %></p>
-      <p>【頼みごとの詳細】</p>
-      <p><%= @task.content %></p>
+      <p>  </p>
+      <h5>◯依頼内容</h5>
+      <h4>  <%= @task.title %>  </h4>
+      <p>  </p>
+      <h5>◯報酬</h5>
+      <h4><%= @task.compensation %></h4>
+      <p>  </p>
+      <h5>◯受託受付終了日</h5>
+      <h4><%= @task.reception_deadline %></h4>
+      <p>  </p>
+      <h5>◯頼みごとの詳細</h5>
+      <h4><%= @task.content %></h4>
+      <p>  </p>
+      <p>  </p>
+      <p>  </p>
 
       <div class="task-menus">
       <% if @assistant && @task.user_id != @current_user.id %>
