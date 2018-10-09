@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      task: 頼みごと
+      user: ユーザー
+    attributes:
+      task:
+        title: タイトル
+        compensation: 報酬
+        reception_deadline: 受託受付終了日
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
