@@ -3,7 +3,7 @@ before_action :authenticate_user
 before_action :ensure_correct_user, {only:[:edit, :update, :destroy]}
 
   def index
-    @tasks = Task.all.where(status: 00).order(created_at: :desc)
+    @tasks = Task.all.where(status: 00).where("reception_deadline > ?", DateTime.now).order(created_at: :desc)
   end
 
   def show

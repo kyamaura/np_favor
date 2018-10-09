@@ -2,11 +2,11 @@
   <div class="container">
     <% @tasks.each do |task|  %>
       <div class="tasks-index-item">
-        <p>【依頼内容】</p>
+        <p>◯依頼内容</p>
         <%= task.title %>
-        <p>【報酬】</p>
+        <p>◯報酬</p>
         <%= task.compensation %>
-        <p>【受託受付終了日】</p>
+        <p>◯受託受付終了日</p>
         <%= task.reception_deadline %>
         <p>   </p>
         <%= link_to("/tasks/#{task.id}") do %>
