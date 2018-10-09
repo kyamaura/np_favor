@@ -15,10 +15,13 @@ class UsersController < ApplicationController
       flash[:notice] = "ログイン完了しました"
       redirect_to("/tasks/index")
     else
+      # @error_messageを定義してください
       @error_message = "メールアドレスまたはパスワードが間違っています"
+
+      # @emailと@passwordを定義してください
       @email = params[:email]
       @password = params[:password]
-      render('users/login_form')
+      render("users/login_form")
     end
   end
 
@@ -30,28 +33,27 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      image_name:'Champions-League.jpg',
+      image_name:"Champions-League.jpg",
       password: params[:password]
      )
     if @user.save
       session[:user_id] = @user.id
-      UserMailer.welcome_email(@user).deliver_now
-      flash[:notice] = 'ユーザー登録が完了しました'
-      redirect_to('/tasks/index')
+      flash[:notice] = "ユーザー登録が完了しました"
+      redirect_to("/tasks/index")
     else
-      render('users/new')
+      render("users/new")
     end
   end
 
   def logout
     session[:user_id] = nil
-    flash[:notice] = 'ログアウトしました'
-    redirect_to('/')
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/")
   end
 
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
-      flash[:notice] = '権限が必要です'
+      flash[:notice] = "権限が必要です"
       redirect_to("/tasks/index")
     end
   end
