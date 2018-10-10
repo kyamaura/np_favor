@@ -25,9 +25,8 @@
         </div>
         <div class="task-right">
           <div class="task-user-name">
-            <%= link_to(task.user.name, "/users/#{task.user.id}") %>
+            <%= link_to(task.title, "/tasks/#{task.id}") %>
           </div>
-          <%= link_to(task.title, "/tasks/#{task.id}") %>
         </div>
       </div>
     <% end %>
