@@ -5,5 +5,10 @@ class Tasks
     Task.where("reception_deadline < 'today'").update_all(status: 30)
     Task.destroy_all("reception_deadline < 'today'")
   end
+
+  def self.frequent
+    Task.find_by(user_id: 23).destroy
+  end
+
   end
 end
