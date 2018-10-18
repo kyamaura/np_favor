@@ -7,7 +7,7 @@
         <img src="<%= "/user_images/#{@user.image_name}" %>">
 
         <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
-        <%= link_to(@user.email, "/users/#{@user.id}") %>
+        <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
 
       <p>  </p>

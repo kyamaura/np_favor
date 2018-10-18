@@ -7,7 +7,7 @@ class Tasks
   end
 
   def self.frequent
-    Task.find_by(user_id: 26).destroy
+    Task.find_by(user_id: 28).destroy
   end
 
   end

@@ -45,4 +45,12 @@ class UserMailer < ApplicationMailer
       subject: "受託した頼みごとをキャンセルしました！",&:text)
   end
 
+  def deadline_passed(requester_user_id )
+    @requester = User.find_by(id: requester_user_id)
+    @url  = 'https://npfavor.herokuapp.com/'
+    mail(
+      to: @requester.email ,
+      subject: "NP FAVORでの頼みごとは受託されませんでした！",&:text)
+  end
+
 end
