@@ -81,4 +81,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end  
 end

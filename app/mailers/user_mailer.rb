@@ -18,4 +18,13 @@ class UserMailer < ApplicationMailer
       subject: "NP FAVORでの頼みごとが受託されました！！！",&:text)
   end
 
+  def task_canceled(requester_user_id, assistant_user_id )
+    @requester = User.find_by(id: requester_user_id)
+    @assistant = User.find_by(id: assistant_user_id)
+    @url  = 'http://localhost:3000/login'
+    mail(
+      to: @requester.email ,
+      subject: "#{@assistant.name}が受託した頼みごとがキャンセルされました！！！",&:text)
+  end
+
 end
