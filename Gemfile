@@ -29,7 +29,7 @@ gem 'kakurenbo'
 gem 'rails-i18n'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'clockwork'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -42,7 +42,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'letter_opener' # 追加
-  gem 'letter_opener_web' # 追加  
+  gem 'letter_opener_web' # 追加
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
