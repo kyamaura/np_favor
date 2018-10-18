@@ -28,6 +28,7 @@ class AssistantsController < ApplicationController
     @task.save!
     @assistant = Assistant.find_by(user_id: @current_user.id, task_id: params[:task_id])
     UserMailer.task_canceled(@task.user_id, @assistant.user_id ).deliver_now
+    UserMailer.canceled_notification(@task.user_id, @assistant.user_id ).deliver_now
     @assistant.destroy!
 
     end
