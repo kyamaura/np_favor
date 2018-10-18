@@ -11,6 +11,7 @@ class AssistantsController < ApplicationController
     @task.status = 10
     @task.save!
     UserMailer.task_received(@task.user_id, @assistant.user_id ).deliver_now
+    UserMailer.received_notification(@task.user_id, @assistant.user_id ).deliver_now
     end
     flash[:notice] = "頼みごとを引き受けました"
     redirect_to("/tasks/index")

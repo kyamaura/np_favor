@@ -12,16 +12,25 @@ class UserMailer < ApplicationMailer
   def task_received(requester_user_id, assistant_user_id )
     @requester = User.find_by(id: requester_user_id)
     @assistant = User.find_by(id: assistant_user_id)
-    @url  = 'http://localhost:3000/login'
+    @url  = 'https://npfavor.herokuapp.com/'
     mail(
       to: @requester.email ,
       subject: "NP FAVORでの頼みごとが受託されました！！！",&:text)
   end
 
+  def received_notification(requester_user_id, assistant_user_id )
+    @requester = User.find_by(id: requester_user_id)
+    @assistant = User.find_by(id: assistant_user_id)
+    @url  = 'https://npfavor.herokuapp.com/'
+    mail(
+      to: @assistant.email ,
+      subject: "#{@requester.name}さんの頼みごとを受託しました！！！",&:text)
+  end
+
   def task_canceled(requester_user_id, assistant_user_id )
     @requester = User.find_by(id: requester_user_id)
     @assistant = User.find_by(id: assistant_user_id)
-    @url  = 'http://localhost:3000/login'
+    @url  = 'https://npfavor.herokuapp.com/'
     mail(
       to: @requester.email ,
       subject: "#{@assistant.name}が受託した頼みごとがキャンセルされました！！！",&:text)
